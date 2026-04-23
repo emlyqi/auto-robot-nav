@@ -24,6 +24,13 @@ PlannerNode::PlannerNode() : Node("planner"), planner_(robot::PlannerCore(this->
 
 void PlannerNode::mapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg) {
   planner_.updateMap(*msg);
+
+  // if we're actively chasing a goal, replan right away
+  if (planner_.shouldReplan()) {
+    auto path = planner_.planPath();
+    path.header.stamp = this->get_clock()->now();
+    path_pub_->publish(path);
+  }
 }
 
 void PlannerNode::goalCallback(const geometry_msgs::msg::PointStamped::SharedPtr msg) {
@@ -43,9 +50,7 @@ void PlannerNode::timerCallback() {
     return;
   }
 
-  auto path = planner_.planPath();
-  path.header.stamp = this->get_clock()->now();
-  path_pub_->publish(path);
+  // no replanning here bc now handled by map callback
 }
 
 int main(int argc, char ** argv)

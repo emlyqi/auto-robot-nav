@@ -22,9 +22,9 @@ class MapMemoryCore {
     rclcpp::Logger logger_;
 
     // global map params
-    double resolution_ = 0.1;
-    int width_ = 300; // 30m
-    int height_ = 300;
+    double resolution_ = 0.2;
+    int width_ = 150; // 15m
+    int height_ = 150;
     double origin_x_ = -15.0;
     double origin_y_ = -15.0;
     std::vector<int8_t> global_map_;

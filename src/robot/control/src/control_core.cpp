@@ -70,6 +70,13 @@ std::optional<geometry_msgs::msg::PoseStamped> ControlCore::findLookaheadPoint()
     double dx = pose.pose.position.x - robot_x_;
     double dy = pose.pose.position.y - robot_y_;
     double d = std::sqrt(dx * dx + dy * dy);
+
+    // forward-only filter
+    double angle_to_pose = std::atan2(dy, dx);
+    double angle_diff = angle_to_pose - robot_yaw_;
+    while (angle_diff > M_PI) angle_diff -= 2 * M_PI;
+    while (angle_diff < -M_PI) angle_diff += 2 * M_PI;
+    if (std::abs(angle_diff) > M_PI_2) continue; // skip pts behind
     if (d >= lookahead_dist_) return pose;
   }
 

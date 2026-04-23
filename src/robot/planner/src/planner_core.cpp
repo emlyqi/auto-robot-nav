@@ -40,7 +40,7 @@ void PlannerCore::gridToWorld(int cx, int cy, double& wx, double& wy) const {
 bool PlannerCore::isOccupied(int cx, int cy) const {
     int idx = cy * map_.info.width + cx;
     int8_t v = map_.data[idx];
-    return v >= 30; // treat 30+ as blocked
+    return v >= 25; // treat 25+ as blocked
 }
 
 double PlannerCore::heuristic(const CellIndex& a, const CellIndex& b) const {

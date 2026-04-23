@@ -30,11 +30,11 @@ class ControlCore {
     double robot_y_ = 0.0;
     double robot_yaw_ = 0.0;
 
-    double lookahead_dist_ = 1.0; // m - how far ahead to aim
+    double lookahead_dist_ = 0.5; // m - how far ahead to aim
     double linear_speed_ = 1.0; // m/s - constant forward speed
     double goal_tolerance_ = 0.3; // m - stop when within this of last waypoint
     double max_steering_angle_ = 0.5;
-    
+
     std::optional<geometry_msgs::msg::PoseStamped> findLookaheadPoint() const;
 };
 
