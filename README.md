@@ -1,7 +1,7 @@
 # Autonomous Robot Navigation Stack
 End-to-end autonomous navigation stack in C++ / ROS 2 for a simulated differential-drive robot with 2D lidar. The robot receives a user-clicked goal and drives there autonomously — avoiding obstacles and remembering areas it's already explored.
 
-Built as the [WATonomous ASD Admissions Assignment](./ASSIGNMENT.md).
+Built for the [WATonomous ASD Admissions Assignment](./ASSIGNMENT.md).
 
 ## Demo
 (sped up 5x)
