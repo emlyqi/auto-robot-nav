@@ -24,8 +24,8 @@ Each node is split into a ROS-facing layer (`*_node`) and a pure algorithm layer
 Prerequisites: Docker + Docker Compose.
 
 ```bash
-git clone https://github.com/emlyqi/wato_asd.git
-cd wato_asd
+git clone https://github.com/emlyqi/auto-robot-nav.git
+cd auto-robot-nav
 ./watod up
 ```
 
